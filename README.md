@@ -1,73 +1,94 @@
-# Welcome to your Lovable project
 
-## Project info
+# Raccount App - ERP System
 
-**URL**: https://lovable.dev/projects/94b42b8f-42fd-4332-8e7b-ccbef92990a4
+Modern ERP system built with Next.js, Emotion CSS, and TypeScript for accounting and general ledger management.
 
-## How can I edit this code?
+## Tech Stack
 
-There are several ways of editing your application.
+- **Framework:** Next.js 14
+- **Styling:** Emotion CSS (@emotion/styled)
+- **Language:** TypeScript
+- **Package Manager:** Yarn
+- **Icons:** Lucide React
 
-**Use Lovable**
+## Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/94b42b8f-42fd-4332-8e7b-ccbef92990a4) and start prompting.
+- 📊 General Ledger Management
+- 🔍 Advanced Search & Filtering
+- 💰 Transaction Management
+- 📱 Responsive Design
+- 🎨 Modern UI with Teal Green Theme
 
-Changes made via Lovable will be committed automatically to this repo.
+## Project Structure
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+├── components/           # Reusable UI components
+│   ├── common/          # Common components (buttons, inputs, etc.)
+│   ├── layout/          # Layout components (header, sidebar, etc.)
+│   └── modules/         # Feature-specific components
+├── controllers/         # Business logic controllers
+├── entities/           # Data models and types
+├── clients/            # API clients and data fetching
+├── hooks/              # Custom React hooks
+├── utils/              # Utility functions
+├── styles/             # Global styles and theme
+└── pages/              # Next.js pages
 ```
 
-**Edit a file directly in GitHub**
+## Getting Started
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Prerequisites
 
-**Use GitHub Codespaces**
+- Node.js 18+ 
+- Yarn package manager
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Installation
 
-## What technologies are used for this project?
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd raccount-app
+```
 
-This project is built with:
+2. Install dependencies
+```bash
+yarn install
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+3. Run the development server
+```bash
+yarn dev
+```
 
-## How can I deploy this project?
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-Simply open [Lovable](https://lovable.dev/projects/94b42b8f-42fd-4332-8e7b-ccbef92990a4) and click on Share -> Publish.
+## Available Scripts
 
-## Can I connect a custom domain to my Lovable project?
+- `yarn dev` - Start development server
+- `yarn build` - Build for production
+- `yarn start` - Start production server
+- `yarn lint` - Run ESLint
+- `yarn type-check` - Run TypeScript compiler
 
-Yes, you can!
+## API Integration
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+The application is structured to easily integrate with backend APIs:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- **Controllers**: Handle business logic and API calls
+- **Clients**: Manage HTTP requests and responses  
+- **Entities**: Define data models and validation
+
+Currently using dummy data for development. Replace with actual API endpoints when ready.
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
