@@ -13,6 +13,7 @@ import {
 export const Header = () => {
   const location = useLocation();
   const isAccountPage = location.pathname === '/account';
+  const isGeneralLedgerPage = location.pathname === '/general-ledger' || location.pathname === '/';
   
   return (
     <HeaderContainer>
@@ -25,16 +26,20 @@ export const Header = () => {
           <BreadcrumbSeparator>/</BreadcrumbSeparator>
           {isAccountPage ? (
             <>
+              <Link to="/general-ledger">
+                <BookOpen size={16} />
+              </Link>
+              <BreadcrumbItem>
+                <Link to="/general-ledger">General Ledger</Link>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator>/</BreadcrumbSeparator>
               <User size={16} />
               <BreadcrumbItem active>Account</BreadcrumbItem>
             </>
           ) : (
             <>
               <BookOpen size={16} />
-              <BreadcrumbItem>General Ledger</BreadcrumbItem>
-              <BreadcrumbSeparator>/</BreadcrumbSeparator>
-              <User size={16} />
-              <BreadcrumbItem active>Account</BreadcrumbItem>
+              <BreadcrumbItem active>General Ledger</BreadcrumbItem>
             </>
           )}
         </Breadcrumb>

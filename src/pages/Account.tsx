@@ -1,9 +1,9 @@
 
 import React, { useState } from 'react';
-import { Plus, Search, Eye, Edit } from 'lucide-react';
+import { Plus, Search } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { AccountTable } from '@/components/modules/AccountTable/AccountTable';
-import { AccountSearch } from '@/components/modules/AccountSearch/AccountSearch';
+import { AccountForm } from '@/components/modules/AccountForm/AccountForm';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -22,10 +22,11 @@ import {
 } from './Account.styles';
 
 export default function AccountPage() {
-  const { accounts, loading, error } = useAccounts();
+  const { accounts, loading, error, addAccount, updateAccount, deleteAccount } = useAccounts();
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('All');
   const [showFilter, setShowFilter] = useState(10);
+  const [showAddForm, setShowAddForm] = useState(false);
 
   const handleSearch = (value: string) => {
     setSearchTerm(value);
@@ -37,6 +38,31 @@ export default function AccountPage() {
 
   const handleShowChange = (value: string) => {
     setShowFilter(parseInt(value));
+  };
+
+  const handleAddAccount = (data: any) => {
+    const newAccount: Account = {
+      id: Date.now().toString(),
+      code: data.code,
+      name: data.name,
+      category: data.category,
+      balance: 0,
+      description: data.description,
+    };
+    addAccount(newAccount);
+  };
+
+  const handleEditAccount = (account: Account) => {
+    updateAccount(account);
+  };
+
+  const handleDeleteAccount = (accountId: string) => {
+    deleteAccount(accountId);
+  };
+
+  const handleDeactivateAccount = (accountId: string) => {
+    // For now, we'll just delete it. In a real app, you'd have an isActive field
+    deleteAccount(accountId);
   };
 
   const filteredAccounts = accounts.filter(account => {
@@ -116,16 +142,30 @@ export default function AccountPage() {
           {loading ? (
             <LoadingState>Loading accounts...</LoadingState>
           ) : (
-            <AccountTable accounts={displayedAccounts} />
+            <AccountTable 
+              accounts={displayedAccounts}
+              onEdit={handleEditAccount}
+              onDelete={handleDeleteAccount}
+              onDeactivate={handleDeactivateAccount}
+            />
           )}
         </TableSection>
 
         <AddButton>
-          <Button className="bg-emerald-600 hover:bg-emerald-700">
+          <Button 
+            className="bg-emerald-600 hover:bg-emerald-700"
+            onClick={() => setShowAddForm(true)}
+          >
             <Plus className="h-4 w-4 mr-2" />
             Tambah akun
           </Button>
         </AddButton>
+
+        <AccountForm
+          open={showAddForm}
+          onClose={() => setShowAddForm(false)}
+          onSubmit={handleAddAccount}
+        />
       </MainContent>
     </PageContainer>
   );

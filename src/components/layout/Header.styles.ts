@@ -53,6 +53,17 @@ export const Breadcrumb = styled.nav`
   font-size: ${theme.fontSize.sm};
   flex-wrap: wrap;
   
+  a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    
+    &:hover {
+      color: ${theme.colors.primary[600]};
+    }
+  }
+  
   @media (max-width: 768px) {
     font-size: ${theme.fontSize.xs};
     gap: ${theme.spacing.xs};
@@ -67,6 +78,15 @@ export const BreadcrumbItem = styled.span<{ active?: boolean }>`
   color: ${({ active }) => active ? theme.colors.primary[600] : theme.colors.gray[500]};
   font-weight: ${({ active }) => active ? theme.fontWeight.medium : theme.fontWeight.normal};
   white-space: nowrap;
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+    
+    &:hover {
+      color: ${theme.colors.primary[600]};
+    }
+  }
 `;
 
 export const BreadcrumbSeparator = styled.span`

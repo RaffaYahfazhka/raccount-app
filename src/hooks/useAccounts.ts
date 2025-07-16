@@ -66,6 +66,37 @@ export const useAccounts = () => {
     }
   };
 
+  const addAccount = async (account: Account) => {
+    try {
+      await new Promise(resolve => setTimeout(resolve, 300));
+      setAccounts(prev => [...prev, account]);
+    } catch (err) {
+      setError('Failed to add account');
+    }
+  };
+
+  const updateAccount = async (updatedAccount: Account) => {
+    try {
+      await new Promise(resolve => setTimeout(resolve, 300));
+      setAccounts(prev => 
+        prev.map(account => 
+          account.id === updatedAccount.id ? updatedAccount : account
+        )
+      );
+    } catch (err) {
+      setError('Failed to update account');
+    }
+  };
+
+  const deleteAccount = async (accountId: string) => {
+    try {
+      await new Promise(resolve => setTimeout(resolve, 300));
+      setAccounts(prev => prev.filter(account => account.id !== accountId));
+    } catch (err) {
+      setError('Failed to delete account');
+    }
+  };
+
   useEffect(() => {
     fetchAccounts();
   }, []);
@@ -74,6 +105,9 @@ export const useAccounts = () => {
     accounts,
     loading,
     error,
-    refetch: fetchAccounts
+    refetch: fetchAccounts,
+    addAccount,
+    updateAccount,
+    deleteAccount
   };
 };
