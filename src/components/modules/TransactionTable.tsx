@@ -1,4 +1,7 @@
+
 import styled from '@emotion/styled';
+import { Pencil, Trash2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { theme } from '@/styles/theme';
 import { Transaction } from '@/entities/Transaction';
 
@@ -52,11 +55,17 @@ const AmountCell = styled(TableCell)<{ type?: 'debit' | 'credit' }>`
   };
 `;
 
+const ActionCell = styled(TableCell)`
+  width: 120px;
+`;
+
 interface TransactionTableProps {
   transactions: Transaction[];
+  onEdit: (transaction: Transaction) => void;
+  onDelete: (transaction: Transaction) => void;
 }
 
-export const TransactionTable = ({ transactions }: TransactionTableProps) => {
+export const TransactionTable = ({ transactions, onEdit, onDelete }: TransactionTableProps) => {
   const formatCurrency = (amount: number | undefined) => {
     if (!amount) return '';
     return new Intl.NumberFormat('id-ID', {
@@ -77,6 +86,7 @@ export const TransactionTable = ({ transactions }: TransactionTableProps) => {
             <TableHeaderCell>Account</TableHeaderCell>
             <TableHeaderCell>Debit Amount</TableHeaderCell>
             <TableHeaderCell>Credit Amount</TableHeaderCell>
+            <TableHeaderCell>Actions</TableHeaderCell>
           </tr>
         </TableHeader>
         <TableBody>
@@ -92,6 +102,25 @@ export const TransactionTable = ({ transactions }: TransactionTableProps) => {
               <AmountCell type="credit">
                 {formatCurrency(transaction.creditAmount)}
               </AmountCell>
+              <ActionCell>
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => onEdit(transaction)}
+                  >
+                    <Pencil className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => onDelete(transaction)}
+                    className="text-destructive hover:text-destructive"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </div>
+              </ActionCell>
             </TableRow>
           ))}
         </TableBody>

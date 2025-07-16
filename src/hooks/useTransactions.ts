@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { transactionController } from '@/controllers/TransactionController';
 import { Transaction, TransactionFilter } from '@/entities/Transaction';
@@ -39,6 +40,19 @@ export const useTransactions = () => {
     }
   };
 
+  const editTransaction = async (id: string, updates: Partial<Transaction>) => {
+    const result = await transactionController.editTransaction(id, updates);
+    
+    if (result.success) {
+      // Refresh the transaction list
+      await fetchTransactions();
+      return true;
+    } else {
+      setError(result.error || 'Failed to update transaction');
+      return false;
+    }
+  };
+
   const deleteTransaction = async (id: string) => {
     const result = await transactionController.removeTransaction(id);
     
@@ -64,6 +78,7 @@ export const useTransactions = () => {
     totalPages,
     fetchTransactions,
     addTransaction,
+    editTransaction,
     deleteTransaction,
     refetch: () => fetchTransactions()
   };
