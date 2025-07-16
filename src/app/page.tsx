@@ -50,7 +50,7 @@ const LoadingState = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: ${theme.spacing['2xl']];
+  padding: ${theme.spacing['2xl']};
   color: ${theme.colors.gray[500]};
 `;
 
@@ -88,12 +88,15 @@ export default function GeneralLedgerPage() {
     // This would typically open a modal or navigate to a form page
     console.log('Add Entry clicked');
     // For demo purposes, let's add a sample transaction
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString('en-GB', { 
+      day: '2-digit', 
+      month: 'short', 
+      year: 'numeric' 
+    });
+    
     addTransaction({
-      date: new Date().toLocaleDateString('en-GB', { 
-        day: '2-digit', 
-        month: 'short', 
-        year: 'numeric' 
-      }),
+      date: formattedDate,
       reference: 'NEW-001',
       transactionName: 'New transaction',
       account: 'Cash',
