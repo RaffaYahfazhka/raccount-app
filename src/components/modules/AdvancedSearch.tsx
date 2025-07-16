@@ -1,76 +1,20 @@
+
 import { useState } from 'react';
-import styled from '@emotion/styled';
 import { Search, ChevronDown, ChevronUp } from 'lucide-react';
-import { theme } from '@/styles/theme';
 import { Button } from '@/components/common/Button';
 import { Input, Select } from '@/components/common/Input';
 import { TransactionFilter } from '@/entities/Transaction';
-
-const SearchContainer = styled.div`
-  background-color: ${theme.colors.white};
-  border-radius: ${theme.borderRadius.lg};
-  box-shadow: ${theme.shadows.sm};
-  padding: ${theme.spacing.lg};
-  margin-bottom: ${theme.spacing.lg};
-`;
-
-const SearchHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: ${theme.spacing.md};
-`;
-
-const SearchTitle = styled.h3`
-  color: ${theme.colors.gray[800]};
-  font-size: ${theme.fontSize.lg};
-  font-weight: ${theme.fontWeight.medium};
-  margin: 0;
-`;
-
-const ToggleButton = styled.button`
-  display: flex;
-  align-items: center;
-  gap: ${theme.spacing.xs};
-  background: none;
-  border: none;
-  color: ${theme.colors.primary[600]};
-  cursor: pointer;
-  font-size: ${theme.fontSize.sm};
-  
-  &:hover {
-    color: ${theme.colors.primary[700]};
-  }
-`;
-
-const SearchForm = styled.form<{ expanded: boolean }>`
-  display: ${({ expanded }) => expanded ? 'block' : 'none'};
-`;
-
-const FormGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: ${theme.spacing.md};
-  margin-bottom: ${theme.spacing.lg};
-`;
-
-const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${theme.spacing.xs};
-`;
-
-const Label = styled.label`
-  color: ${theme.colors.gray[700]};
-  font-size: ${theme.fontSize.sm};
-  font-weight: ${theme.fontWeight.medium};
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  gap: ${theme.spacing.md};
-  justify-content: flex-end;
-`;
+import {
+  SearchContainer,
+  SearchHeader,
+  SearchTitle,
+  ToggleButton,
+  SearchForm,
+  FormGrid,
+  FormGroup,
+  Label,
+  ButtonContainer
+} from './AdvancedSearch.styles';
 
 interface AdvancedSearchProps {
   onSearch: (filters: TransactionFilter) => void;
@@ -202,7 +146,7 @@ export const AdvancedSearch = ({ onSearch, onReset }: AdvancedSearchProps) => {
             Reset
           </Button>
           <Button type="submit">
-            <Search size={16} style={{ marginRight: theme.spacing.xs }} />
+            <Search size={16} style={{ marginRight: '0.25rem' }} />
             Search
           </Button>
         </ButtonContainer>

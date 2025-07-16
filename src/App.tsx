@@ -1,8 +1,6 @@
-
 'use client';
 
 import { useState } from 'react';
-import styled from '@emotion/styled';
 import { Plus, FileText } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { TransactionTable } from '@/components/modules/TransactionTable';
@@ -12,59 +10,17 @@ import { DeleteTransactionDialog } from '@/components/modules/DeleteTransactionD
 import { Button } from '@/components/common/Button';
 import { useTransactions } from '@/hooks/useTransactions';
 import { Transaction, TransactionFilter } from '@/entities/Transaction';
-import { theme } from '@/styles/theme';
 import { useToast } from '@/hooks/use-toast';
-
-const PageContainer = styled.div`
-  min-height: 100vh;
-  background-color: ${theme.colors.gray[50]};
-`;
-
-const MainContent = styled.main`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: ${theme.spacing.xl};
-`;
-
-const PageHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: ${theme.spacing.xl};
-`;
-
-const PageTitle = styled.h2`
-  color: ${theme.colors.gray[800]};
-  font-size: ${theme.fontSize['2xl']};
-  font-weight: ${theme.fontWeight.semibold};
-  margin: 0;
-`;
-
-const ActionButtons = styled.div`
-  display: flex;
-  gap: ${theme.spacing.md};
-`;
-
-const TableSection = styled.section`
-  margin-bottom: ${theme.spacing.xl};
-`;
-
-const LoadingState = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: ${theme.spacing['2xl']};
-  color: ${theme.colors.gray[500]};
-`;
-
-const ErrorState = styled.div`
-  background-color: ${theme.colors.error}20;
-  border: 1px solid ${theme.colors.error};
-  border-radius: ${theme.borderRadius.md};
-  padding: ${theme.spacing.md};
-  color: ${theme.colors.error};
-  margin-bottom: ${theme.spacing.lg};
-`;
+import {
+  PageContainer,
+  MainContent,
+  PageHeader,
+  PageTitle,
+  ActionButtons,
+  TableSection,
+  LoadingState,
+  ErrorState
+} from './App.styles';
 
 export default function App() {
   const {
@@ -180,11 +136,11 @@ export default function App() {
               variant="outline" 
               onClick={handleAddTransaction}
             >
-              <Plus size={16} style={{ marginRight: theme.spacing.xs }} />
+              <Plus size={16} style={{ marginRight: '0.25rem' }} />
               Add Entry
             </Button>
             <Button onClick={handleAddTransaction}>
-              <FileText size={16} style={{ marginRight: theme.spacing.xs }} />
+              <FileText size={16} style={{ marginRight: '0.25rem' }} />
               Add Transaction
             </Button>
           </ActionButtons>
