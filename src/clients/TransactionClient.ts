@@ -1,109 +1,142 @@
 
 import { Transaction, TransactionFilter, PaginationInfo } from '@entities/Transaction';
 
-export class TransactionClient {
-  private baseUrl: string;
-
-  constructor(baseUrl: string = '/api') {
-    this.baseUrl = baseUrl;
+// Mock data for demonstration purposes
+const mockTransactions: Transaction[] = [
+  {
+    id: '1',
+    date: '15 Jul 2024',
+    reference: 'TXN-001',
+    transactionName: 'Office Supplies Purchase',
+    account: 'Supply',
+    debitAmount: 500000,
+    category: 'Supply'
+  },
+  {
+    id: '2',
+    date: '14 Jul 2024',
+    reference: 'TXN-002',
+    transactionName: 'Cash Receipt',
+    account: 'Cash',
+    creditAmount: 1000000,
+    category: 'Cash'
+  },
+  {
+    id: '3',
+    date: '13 Jul 2024',
+    reference: 'TXN-003',
+    transactionName: 'Service Revenue',
+    account: 'Service Revenue',
+    creditAmount: 750000,
+    category: 'Service Revenue'
   }
+];
 
+export class TransactionClient {
   async getTransactions(
     filter?: TransactionFilter,
     page: number = 1,
     limit: number = 10
-  ): Promise<{ transactions: Transaction[]; pagination: PaginationInfo }> {
-    // Simulate API call with dummy data for now
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const dummyTransactions: Transaction[] = [
-          {
-            id: '1',
-            date: '27 Jan 2025',
-            reference: 'PAY-001',
-            transactionName: 'Buying supplies',
-            account: 'Supply',
-            debitAmount: 150000000,
-            category: 'Supply'
-          },
-          {
-            id: '2',
-            date: '27 Jan 2025',
-            reference: 'PAY-001',
-            transactionName: 'Buying supplies',
-            account: 'Cash',
-            creditAmount: 150000000,
-            category: 'Cash'
-          },
-          {
-            id: '3',
-            date: '28 Jan 2025',
-            reference: 'REV-001',
-            transactionName: 'Service sales',
-            account: 'Cash',
-            debitAmount: 5000000,
-            category: 'Cash'
-          },
-          {
-            id: '4',
-            date: '28 Jan 2025',
-            reference: 'REV-001',
-            transactionName: 'Service sales',
-            account: 'Service Revenue',
-            creditAmount: 5000000,
-            category: 'Service Revenue'
-          }
-        ];
+  ): Promise<{
+    transactions: Transaction[];
+    pagination: PaginationInfo;
+  }> {
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 500));
 
-        resolve({
-          transactions: dummyTransactions,
-          pagination: {
-            currentPage: page,
-            totalPages: 1,
-            itemsPerPage: limit,
-            totalItems: dummyTransactions.length
-          }
-        });
-      }, 500);
-    });
+    let filteredTransactions = [...mockTransactions];
+
+    // Apply filters
+    if (filter) {
+      if (filter.startDate) {
+        filteredTransactions = filteredTransactions.filter(t => 
+          new Date(t.date) >= new Date(filter.startDate!)
+        );
+      }
+      if (filter.endDate) {
+        filteredTransactions = filteredTransactions.filter(t => 
+          new Date(t.date) <= new Date(filter.endDate!)
+        );
+      }
+      if (filter.accountName) {
+        filteredTransactions = filteredTransactions.filter(t => 
+          t.account.toLowerCase().includes(filter.accountName!.toLowerCase())
+        );
+      }
+      if (filter.minDebitAmount) {
+        filteredTransactions = filteredTransactions.filter(t => 
+          (t.debitAmount || 0) >= filter.minDebitAmount!
+        );
+      }
+      if (filter.maxDebitAmount) {
+        filteredTransactions = filteredTransactions.filter(t => 
+          (t.debitAmount || 0) <= filter.maxDebitAmount!
+        );
+      }
+      if (filter.minCreditAmount) {
+        filteredTransactions = filteredTransactions.filter(t => 
+          (t.creditAmount || 0) >= filter.minCreditAmount!
+        );
+      }
+      if (filter.maxCreditAmount) {
+        filteredTransactions = filteredTransactions.filter(t => 
+          (t.creditAmount || 0) <= filter.maxCreditAmount!
+        );
+      }
+    }
+
+    // Apply pagination
+    const startIndex = (page - 1) * limit;
+    const endIndex = startIndex + limit;
+    const paginatedTransactions = filteredTransactions.slice(startIndex, endIndex);
+
+    return {
+      transactions: paginatedTransactions,
+      pagination: {
+        currentPage: page,
+        totalPages: Math.ceil(filteredTransactions.length / limit),
+        itemsPerPage: limit,
+        totalItems: filteredTransactions.length
+      }
+    };
   }
 
-  async createTransaction(transaction: Omit<Transaction, 'id'>): Promise<Transaction> {
-    // Simulate API call
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          ...transaction,
-          id: Date.now().toString()
-        });
-      }, 500);
-    });
+  async createTransaction(transactionData: Omit<Transaction, 'id'>): Promise<Transaction> {
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 300));
+
+    const newTransaction: Transaction = {
+      ...transactionData,
+      id: Date.now().toString()
+    };
+
+    mockTransactions.push(newTransaction);
+    return newTransaction;
   }
 
-  async updateTransaction(id: string, transaction: Partial<Transaction>): Promise<Transaction> {
-    // Simulate API call
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          id,
-          date: '29 Jan 2025',
-          reference: 'UPD-001',
-          transactionName: 'Updated transaction',
-          account: 'Cash',
-          debitAmount: 1000000,
-          ...transaction
-        });
-      }, 500);
-    });
+  async updateTransaction(id: string, updates: Partial<Transaction>): Promise<Transaction> {
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 300));
+
+    const index = mockTransactions.findIndex(t => t.id === id);
+    if (index === -1) {
+      throw new Error('Transaction not found');
+    }
+
+    mockTransactions[index] = { ...mockTransactions[index], ...updates };
+    return mockTransactions[index];
   }
 
   async deleteTransaction(id: string): Promise<void> {
-    // Simulate API call
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, 500);
-    });
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 300));
+
+    const index = mockTransactions.findIndex(t => t.id === id);
+    if (index === -1) {
+      throw new Error('Transaction not found');
+    }
+
+    mockTransactions.splice(index, 1);
   }
 }
 
