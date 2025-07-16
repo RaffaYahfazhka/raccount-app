@@ -1,7 +1,6 @@
-
 import { useState, useEffect } from 'react';
-import { transactionController } from '@controllers/TransactionController';
-import { Transaction, TransactionFilter } from '@entities/Transaction';
+import { transactionController } from '@/controllers/TransactionController';
+import { Transaction, TransactionFilter } from '@/entities/Transaction';
 
 export const useTransactions = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);

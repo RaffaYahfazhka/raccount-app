@@ -1,7 +1,6 @@
-
 import styled from '@emotion/styled';
 import { Home, BookOpen, User } from 'lucide-react';
-import { theme } from '@styles/theme';
+import { theme } from '@/styles/theme';
 
 const HeaderContainer = styled.header`
   background-color: ${theme.colors.white};

@@ -1,7 +1,6 @@
-
 import styled from '@emotion/styled';
-import { theme } from '@styles/theme';
-import { Transaction } from '@entities/Transaction';
+import { theme } from '@/styles/theme';
+import { Transaction } from '@/entities/Transaction';
 
 const TableContainer = styled.div`
   background-color: ${theme.colors.white};

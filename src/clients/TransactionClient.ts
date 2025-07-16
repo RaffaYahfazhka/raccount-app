@@ -1,5 +1,4 @@
-
-import { Transaction, TransactionFilter, PaginationInfo } from '@entities/Transaction';
+import { Transaction, TransactionFilter, PaginationInfo } from '@/entities/Transaction';
 
 // Mock data for demonstration purposes
 const mockTransactions: Transaction[] = [

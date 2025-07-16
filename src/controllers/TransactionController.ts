@@ -1,6 +1,5 @@
-
-import { transactionClient } from '@clients/TransactionClient';
-import { Transaction, TransactionFilter } from '@entities/Transaction';
+import { transactionClient } from '@/clients/TransactionClient';
+import { Transaction, TransactionFilter } from '@/entities/Transaction';
 
 export class TransactionController {
   async getFilteredTransactions(

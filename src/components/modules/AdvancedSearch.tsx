@@ -1,11 +1,10 @@
-
 import { useState } from 'react';
 import styled from '@emotion/styled';
 import { Search, ChevronDown, ChevronUp } from 'lucide-react';
-import { theme } from '@styles/theme';
-import { Button } from '@components/common/Button';
-import { Input, Select } from '@components/common/Input';
-import { TransactionFilter } from '@entities/Transaction';
+import { theme } from '@/styles/theme';
+import { Button } from '@/components/common/Button';
+import { Input, Select } from '@/components/common/Input';
+import { TransactionFilter } from '@/entities/Transaction';
 
 const SearchContainer = styled.div`
   background-color: ${theme.colors.white};
