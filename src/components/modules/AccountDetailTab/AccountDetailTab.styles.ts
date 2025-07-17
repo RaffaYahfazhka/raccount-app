@@ -2,165 +2,107 @@
 import styled from '@emotion/styled';
 import { theme } from '@/styles/theme';
 
-export const Container = styled.div`
-  padding: ${theme.spacing.xl};
+export const TabContainer = styled.div`
+  background-color: ${theme.colors.white};
+  border-radius: ${theme.borderRadius.lg};
+  box-shadow: ${theme.shadows.sm};
+  padding: ${theme.spacing.lg};
   
   @media (max-width: 768px) {
-    padding: ${theme.spacing.md};
-  }
-  
-  @media (max-width: 480px) {
+    margin: 0 -${theme.spacing.sm};
+    border-radius: 0;
     padding: ${theme.spacing.sm};
   }
 `;
 
-export const ContentGrid = styled.div`
+export const AccountInfo = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: ${theme.spacing.xl};
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: ${theme.spacing.lg};
   margin-bottom: ${theme.spacing.xl};
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: ${theme.spacing.lg};
-    margin-bottom: ${theme.spacing.lg};
-  }
-`;
-
-export const DetailSection = styled.div`
-  h3 {
-    font-size: ${theme.fontSize.lg};
-    font-weight: ${theme.fontWeight.semibold};
-    color: ${theme.colors.gray[800]};
-    margin-bottom: ${theme.spacing.lg};
-    
-    @media (max-width: 480px) {
-      font-size: ${theme.fontSize.md};
-      margin-bottom: ${theme.spacing.md};
-    }
-  }
-`;
-
-export const BalanceSection = styled.div`
-  h3 {
-    font-size: ${theme.fontSize.lg};
-    font-weight: ${theme.fontWeight.semibold};
-    color: ${theme.colors.gray[800]};
-    
-    @media (max-width: 480px) {
-      font-size: ${theme.fontSize.md};
-    }
-  }
-  
-  .flex {
-    @media (max-width: 480px) {
-      flex-direction: column;
-      gap: ${theme.spacing.sm};
-      align-items: flex-start;
-    }
-  }
-`;
-
-export const DetailItem = styled.div`
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: ${theme.spacing.md};
-  padding: ${theme.spacing.md} 0;
-  border-bottom: 1px solid ${theme.colors.gray[200]};
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 100px 1fr;
     gap: ${theme.spacing.sm};
-    padding: ${theme.spacing.sm} 0;
-  }
-  
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-    gap: ${theme.spacing.xs};
+    margin-bottom: ${theme.spacing.lg};
   }
 `;
 
-export const Label = styled.span`
-  color: ${theme.colors.gray[600]};
-  font-weight: ${theme.fontWeight.medium};
-  font-size: ${theme.fontSize.sm};
-  
-  @media (max-width: 480px) {
-    font-size: ${theme.fontSize.xs};
-    font-weight: ${theme.fontWeight.semibold};
-  }
-`;
-
-export const Value = styled.span`
-  color: ${theme.colors.gray[800]};
-  font-size: ${theme.fontSize.sm};
-  
-  small {
-    color: ${theme.colors.gray[500]};
-    font-size: ${theme.fontSize.xs};
-    display: block;
-    margin-top: ${theme.spacing.xs};
-  }
-  
-  @media (max-width: 480px) {
-    font-size: ${theme.fontSize.xs};
-  }
-`;
-
-export const BalanceTable = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  white-space: nowrap;
-  
-  @media (max-width: 768px) {
-    font-size: ${theme.fontSize.xs};
-  }
-`;
-
-export const TableHeader = styled.thead`
+export const InfoCard = styled.div`
   background-color: ${theme.colors.gray[50]};
-  display: table-header-group;
-`;
-
-export const TableBody = styled.tbody`
-  display: table-row-group;
-`;
-
-export const TableRow = styled.tr`
-  display: table-row;
-  
-  &:hover {
-    background-color: ${theme.colors.gray[50]};
-  }
-`;
-
-export const TableCell = styled.td`
-  padding: ${theme.spacing.md};
-  border-bottom: 1px solid ${theme.colors.gray[200]};
-  text-align: left;
-  display: table-cell;
-  
-  &:first-of-type {
-    font-weight: ${theme.fontWeight.medium};
-  }
+  border-radius: ${theme.borderRadius.lg};
+  padding: ${theme.spacing.lg};
   
   @media (max-width: 768px) {
     padding: ${theme.spacing.sm};
   }
+`;
+
+export const InfoLabel = styled.div`
+  color: ${theme.colors.gray[600]};
+  font-size: ${theme.fontSize.sm};
+  font-weight: ${theme.fontWeight.medium};
+  margin-bottom: ${theme.spacing.sm};
+`;
+
+export const InfoValue = styled.div`
+  color: ${theme.colors.gray[900]};
+  font-size: ${theme.fontSize.lg};
+  font-weight: ${theme.fontWeight.semibold};
   
-  @media (max-width: 480px) {
-    padding: ${theme.spacing.xs};
+  @media (max-width: 768px) {
+    font-size: ${theme.fontSize.base};
   }
 `;
 
-export const ActionButtons = styled.div`
-  display: flex;
-  gap: ${theme.spacing.md};
+export const BalanceHistorySection = styled.div`
+  margin-top: ${theme.spacing.xl};
   
-  @media (max-width: 480px) {
-    flex-direction: column;
-    gap: ${theme.spacing.sm};
+  @media (max-width: 768px) {
+    margin-top: ${theme.spacing.lg};
   }
+`;
+
+export const SectionTitle = styled.h3`
+  color: ${theme.colors.gray[800]};
+  font-size: ${theme.fontSize.lg};
+  font-weight: ${theme.fontWeight.semibold};
+  margin-bottom: ${theme.spacing.lg};
+  
+  @media (max-width: 768px) {
+    font-size: ${theme.fontSize.base};
+    margin-bottom: ${theme.spacing.sm};
+  }
+`;
+
+export const BalanceHistoryList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${theme.spacing.sm};
+`;
+
+export const BalanceHistoryItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: ${theme.spacing.sm};
+  background-color: ${theme.colors.gray[50]};
+  border-radius: ${theme.borderRadius.md};
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: ${theme.spacing.xs};
+  }
+`;
+
+export const HistoryDate = styled.span`
+  color: ${theme.colors.gray[600]};
+  font-size: ${theme.fontSize.sm};
+`;
+
+export const HistoryAmount = styled.span<{ positive?: boolean }>`
+  color: ${({ positive }) => positive ? theme.colors.green[600] : theme.colors.red[600]};
+  font-weight: ${theme.fontWeight.medium};
+  font-size: ${theme.fontSize.sm};
 `;
