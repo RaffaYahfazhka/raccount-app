@@ -1,5 +1,5 @@
-
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Eye, Edit, Trash2, Power } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Account } from '@/entities/Account';
@@ -35,12 +35,13 @@ interface AccountTableProps {
 }
 
 export const AccountTable = ({ accounts, onEdit, onDelete, onDeactivate }: AccountTableProps) => {
+  const navigate = useNavigate();
   const [editingAccount, setEditingAccount] = useState<Account | null>(null);
   const [deletingAccount, setDeletingAccount] = useState<Account | null>(null);
   const [deactivatingAccount, setDeactivatingAccount] = useState<Account | null>(null);
 
   const handleDetail = (account: Account) => {
-    console.log('View detail for account:', account);
+    navigate(`/account/${account.id}`);
   };
 
   const handleEdit = (account: Account) => {
