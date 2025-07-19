@@ -1,13 +1,16 @@
-
 import styled from '@emotion/styled';
 import { theme } from '@/styles/theme';
 
 export const HeaderContainer = styled.header`
   background-color: ${theme.colors.white};
   border-bottom: 1px solid ${theme.colors.gray[200]};
-  padding: ${theme.spacing.sm} ${theme.spacing.xl};
+  padding: ${theme.spacing.md} ${theme.spacing.xl};
   
   @media (max-width: 768px) {
+    padding: ${theme.spacing.sm} ${theme.spacing.md};
+  }
+  
+  @media (max-width: 480px) {
     padding: ${theme.spacing.sm};
   }
 `;
@@ -22,7 +25,11 @@ export const HeaderContent = styled.div`
   
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: ${theme.spacing.md};
+  }
+  
+  @media (max-width: 480px) {
     gap: ${theme.spacing.sm};
   }
 `;
@@ -35,6 +42,7 @@ export const Logo = styled.h1`
   
   @media (max-width: 768px) {
     font-size: ${theme.fontSize.xl};
+    text-align: center;
   }
   
   @media (max-width: 480px) {
@@ -53,7 +61,7 @@ export const NavLinks = styled.nav`
     gap: ${theme.spacing.xs};
     color: ${theme.colors.gray[600]};
     text-decoration: none;
-    padding: ${theme.spacing.sm} ${theme.spacing.sm};
+    padding: ${theme.spacing.sm} ${theme.spacing.md};
     border-radius: ${theme.borderRadius.md};
     font-size: ${theme.fontSize.sm};
     font-weight: ${theme.fontWeight.medium};
@@ -74,21 +82,28 @@ export const NavLinks = styled.nav`
     width: 100%;
     justify-content: space-around;
     gap: ${theme.spacing.sm};
+    padding: 0 ${theme.spacing.sm};
     
     a {
       flex: 1;
       justify-content: center;
-      padding: ${theme.spacing.xs};
+      padding: ${theme.spacing.sm};
+      font-size: ${theme.fontSize.sm};
+    }
+  }
+  
+  @media (max-width: 480px) {
+    gap: ${theme.spacing.xs};
+    padding: 0;
+    
+    a {
+      padding: ${theme.spacing.xs} ${theme.spacing.sm};
       font-size: ${theme.fontSize.xs};
       
       span {
         display: none;
       }
     }
-  }
-  
-  @media (max-width: 480px) {
-    gap: ${theme.spacing.xs};
   }
 `;
 
@@ -114,6 +129,8 @@ export const Breadcrumb = styled.nav`
   @media (max-width: 768px) {
     font-size: ${theme.fontSize.xs};
     gap: ${theme.spacing.xs};
+    justify-content: center;
+    padding: ${theme.spacing.xs} 0;
   }
   
   @media (max-width: 480px) {
