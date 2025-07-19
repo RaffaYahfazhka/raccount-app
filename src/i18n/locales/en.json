@@ -1,0 +1,90 @@
+
+{
+  "nav": {
+    "home": "Home",
+    "generalLedger": "General Ledger",
+    "account": "Account"
+  },
+  "home": {
+    "title": "Welcome to Raccount",
+    "description": "Your comprehensive accounting solution for managing transactions, accounts, and financial records with ease.",
+    "generalLedger": {
+      "title": "General Ledger",
+      "description": "View and manage all your financial transactions in one place"
+    },
+    "accounts": {
+      "title": "Accounts",
+      "description": "Manage your chart of accounts and account categories"
+    },
+    "stats": {
+      "totalTransactions": "Total Transactions",
+      "activeAccounts": "Active Accounts",
+      "totalBalance": "Total Balance",
+      "growthThisMonth": "Growth This Month"
+    }
+  },
+  "account": {
+    "detail": {
+      "title": "Account Detail",
+      "code": "Code",
+      "name": "Name",
+      "status": "Status",
+      "category": "Category",
+      "subcategory": "Subcategory",
+      "description": "Description",
+      "createdBy": "Created By",
+      "active": "Active",
+      "balance": {
+        "title": "Account Balance",
+        "period": "Period",
+        "openingBalance": "Opening Balance",
+        "totalDebit": "Total Debit",
+        "totalCredit": "Total Credit",
+        "closingBalance": "Closing Balance",
+        "periodRange": "Period Range",
+        "show": "Show"
+      }
+    },
+    "form": {
+      "create": "Create Account",
+      "edit": "Edit Account",
+      "name": "Account Name",
+      "openingBalance": "Opening Balance",
+      "category": "Category",
+      "subcategory": "Subcategory",
+      "description": "Description",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "delete": "Delete Account"
+    },
+    "table": {
+      "code": "Code",
+      "name": "Name",
+      "category": "Category",
+      "subcategory": "Subcategory",
+      "description": "Description",
+      "actions": "Actions",
+      "detail": "Detail",
+      "edit": "Edit",
+      "editAccount": "Edit Account",
+      "deleteAccount": "Delete Account",
+      "deactivateAccount": "Deactivate Account"
+    },
+    "delete": {
+      "title": "Confirm to delete account?",
+      "description": "Account will be deleted",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    },
+    "deactivate": {
+      "title": "Deactivate account?",
+      "description": "Account will be deactivated instead of deleted, and it'll later reactivated by asking the admins.",
+      "cancel": "Cancel",
+      "deactivate": "Deactivate"
+    }
+  },
+  "common": {
+    "edit": "Edit",
+    "delete": "Delete"
+  }
+}

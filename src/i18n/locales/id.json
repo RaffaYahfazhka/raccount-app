@@ -1,0 +1,90 @@
+
+{
+  "nav": {
+    "home": "Beranda",
+    "generalLedger": "Buku Besar",
+    "account": "Akun"
+  },
+  "home": {
+    "title": "Selamat Datang di Raccount",
+    "description": "Solusi akuntansi komprehensif untuk mengelola transaksi, akun, dan catatan keuangan dengan mudah.",
+    "generalLedger": {
+      "title": "Buku Besar",
+      "description": "Lihat dan kelola semua transaksi keuangan Anda di satu tempat"
+    },
+    "accounts": {
+      "title": "Akun",
+      "description": "Kelola bagan akun dan kategori akun Anda"
+    },
+    "stats": {
+      "totalTransactions": "Total Transaksi",
+      "activeAccounts": "Akun Aktif",
+      "totalBalance": "Total Saldo",
+      "growthThisMonth": "Pertumbuhan Bulan Ini"
+    }
+  },
+  "account": {
+    "detail": {
+      "title": "Detail Akun",
+      "code": "Kode",
+      "name": "Nama",
+      "status": "Status",
+      "category": "Kategori",
+      "subcategory": "Subkategori",
+      "description": "Deskripsi",
+      "createdBy": "Dibuat Oleh",
+      "active": "Aktif",
+      "balance": {
+        "title": "Saldo Akun",
+        "period": "Periode",
+        "openingBalance": "Saldo Awal",
+        "totalDebit": "Total Debit",
+        "totalCredit": "Total Kredit",
+        "closingBalance": "Saldo Akhir",
+        "periodRange": "Rentang Periode",
+        "show": "Tampilkan"
+      }
+    },
+    "form": {
+      "create": "Buat Akun",
+      "edit": "Edit Akun",
+      "name": "Nama Akun",
+      "openingBalance": "Saldo Awal",
+      "category": "Kategori",
+      "subcategory": "Subkategori",
+      "description": "Deskripsi",
+      "cancel": "Batal",
+      "confirm": "Konfirmasi",
+      "delete": "Hapus Akun"
+    },
+    "table": {
+      "code": "Kode",
+      "name": "Nama",
+      "category": "Kategori",
+      "subcategory": "Subkategori",
+      "description": "Deskripsi",
+      "actions": "Aksi",
+      "detail": "Detail",
+      "edit": "Edit",
+      "editAccount": "Edit Akun",
+      "deleteAccount": "Hapus Akun",
+      "deactivateAccount": "Nonaktifkan Akun"
+    },
+    "delete": {
+      "title": "Konfirmasi hapus akun?",
+      "description": "Akun akan dihapus",
+      "cancel": "Batal",
+      "delete": "Hapus"
+    },
+    "deactivate": {
+      "title": "Nonaktifkan akun?",
+      "description": "Akun akan dinonaktifkan daripada dihapus, dan nanti dapat diaktifkan kembali dengan meminta admin.",
+      "cancel": "Batal",
+      "deactivate": "Nonaktifkan"
+    }
+  },
+  "common": {
+    "edit": "Edit",
+    "delete": "Hapus"
+  }
+}

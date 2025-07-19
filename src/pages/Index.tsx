@@ -2,6 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, User, TrendingUp, DollarSign, FileText, BarChart3 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/hooks/useLanguage';
 import { Header } from '@/components/layout/Header';
 import { Button } from '@/components/ui/button';
 import {
@@ -23,39 +25,43 @@ import {
 } from './Index.styles';
 
 const Index = () => {
+  const { t } = useTranslation();
+  const { language } = useLanguage();
+  const langPrefix = language === 'id' ? '/id' : language === 'en' ? '/en' : '';
+
   return (
     <PageContainer>
       <Header />
       
       <MainContent>
         <HeroSection>
-          <HeroTitle>Welcome to Raccount</HeroTitle>
+          <HeroTitle>{t('home.title')}</HeroTitle>
           <HeroDescription>
-            Your comprehensive accounting solution for managing transactions, accounts, and financial records with ease.
+            {t('home.description')}
           </HeroDescription>
         </HeroSection>
 
         <QuickActions>
           <ActionCard>
-            <Link to="/general-ledger">
+            <Link to={`${langPrefix}/general-ledger`}>
               <ActionIcon>
                 <BookOpen size={32} />
               </ActionIcon>
-              <ActionTitle>General Ledger</ActionTitle>
+              <ActionTitle>{t('home.generalLedger.title')}</ActionTitle>
               <ActionDescription>
-                View and manage all your financial transactions in one place
+                {t('home.generalLedger.description')}
               </ActionDescription>
             </Link>
           </ActionCard>
 
           <ActionCard>
-            <Link to="/account">
+            <Link to={`${langPrefix}/account`}>
               <ActionIcon>
                 <User size={32} />
               </ActionIcon>
-              <ActionTitle>Accounts</ActionTitle>
+              <ActionTitle>{t('home.accounts.title')}</ActionTitle>
               <ActionDescription>
-                Manage your chart of accounts and account categories
+                {t('home.accounts.description')}
               </ActionDescription>
             </Link>
           </ActionCard>
@@ -67,7 +73,7 @@ const Index = () => {
               <FileText size={24} />
             </StatIcon>
             <StatValue>245</StatValue>
-            <StatLabel>Total Transactions</StatLabel>
+            <StatLabel>{t('home.stats.totalTransactions')}</StatLabel>
           </StatCard>
 
           <StatCard>
@@ -75,7 +81,7 @@ const Index = () => {
               <User size={24} />
             </StatIcon>
             <StatValue>28</StatValue>
-            <StatLabel>Active Accounts</StatLabel>
+            <StatLabel>{t('home.stats.activeAccounts')}</StatLabel>
           </StatCard>
 
           <StatCard>
@@ -83,7 +89,7 @@ const Index = () => {
               <DollarSign size={24} />
             </StatIcon>
             <StatValue>$125,430</StatValue>
-            <StatLabel>Total Balance</StatLabel>
+            <StatLabel>{t('home.stats.totalBalance')}</StatLabel>
           </StatCard>
 
           <StatCard>
@@ -91,7 +97,7 @@ const Index = () => {
               <TrendingUp size={24} />
             </StatIcon>
             <StatValue>+12.5%</StatValue>
-            <StatLabel>Growth This Month</StatLabel>
+            <StatLabel>{t('home.stats.growthThisMonth')}</StatLabel>
           </StatCard>
         </StatsSection>
       </MainContent>

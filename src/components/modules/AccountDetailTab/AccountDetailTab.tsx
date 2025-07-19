@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Account } from '@/entities/Account';
 import { Button } from '@/components/ui/button';
 import {
@@ -31,6 +32,8 @@ const balanceHistory = [
 ];
 
 export const AccountDetailTab = ({ account }: AccountDetailTabProps) => {
+  const { t } = useTranslation();
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('id-ID').format(amount);
   };
@@ -56,33 +59,33 @@ export const AccountDetailTab = ({ account }: AccountDetailTabProps) => {
     <Container>
       <ContentGrid>
         <DetailSection>
-          <h3>Account Detail</h3>
+          <h3>{t('account.detail.title')}</h3>
           <DetailItem>
-            <Label>Code</Label>
+            <Label>{t('account.detail.code')}</Label>
             <Value>{account.code}</Value>
           </DetailItem>
           <DetailItem>
-            <Label>Name</Label>
+            <Label>{t('account.detail.name')}</Label>
             <Value>{account.name}</Value>
           </DetailItem>
           <DetailItem>
-            <Label>Status</Label>
-            <Value>Active</Value>
+            <Label>{t('account.detail.status')}</Label>
+            <Value>{t('account.detail.active')}</Value>
           </DetailItem>
           <DetailItem>
-            <Label>Category</Label>
+            <Label>{t('account.detail.category')}</Label>
             <Value>{account.category}</Value>
           </DetailItem>
           <DetailItem>
-            <Label>Subcategory</Label>
+            <Label>{t('account.detail.subcategory')}</Label>
             <Value>{getSubcategory(account.category)}</Value>
           </DetailItem>
           <DetailItem>
-            <Label>Description</Label>
+            <Label>{t('account.detail.description')}</Label>
             <Value>{account.description || 'Hard cash'}</Value>
           </DetailItem>
           <DetailItem>
-            <Label>Created By</Label>
+            <Label>{t('account.detail.createdBy')}</Label>
             <Value>
               Ahmad (admin)
               <br />
@@ -93,16 +96,16 @@ export const AccountDetailTab = ({ account }: AccountDetailTabProps) => {
 
         <BalanceSection>
           <div className="flex justify-between items-center mb-4">
-            <h3>Account Balance</h3>
+            <h3>{t('account.detail.balance.title')}</h3>
             <div className="flex gap-2 text-sm">
-              <span>Period Range</span>
+              <span>{t('account.detail.balance.periodRange')}</span>
               <select className="border rounded px-2 py-1">
                 <option>1 Month</option>
                 <option>3 Months</option>
                 <option>6 Months</option>
                 <option>1 Year</option>
               </select>
-              <span>Show</span>
+              <span>{t('account.detail.balance.show')}</span>
               <select className="border rounded px-2 py-1">
                 <option>10</option>
                 <option>25</option>
@@ -114,11 +117,11 @@ export const AccountDetailTab = ({ account }: AccountDetailTabProps) => {
           <BalanceTable>
             <TableHeader>
               <TableRow>
-                <TableCell as="th">Period</TableCell>
-                <TableCell as="th">Opening Balance</TableCell>
-                <TableCell as="th">Total Debit</TableCell>
-                <TableCell as="th">Total Credit</TableCell>
-                <TableCell as="th">Closing Balance</TableCell>
+                <TableCell as="th">{t('account.detail.balance.period')}</TableCell>
+                <TableCell as="th">{t('account.detail.balance.openingBalance')}</TableCell>
+                <TableCell as="th">{t('account.detail.balance.totalDebit')}</TableCell>
+                <TableCell as="th">{t('account.detail.balance.totalCredit')}</TableCell>
+                <TableCell as="th">{t('account.detail.balance.closingBalance')}</TableCell>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -137,8 +140,8 @@ export const AccountDetailTab = ({ account }: AccountDetailTabProps) => {
       </ContentGrid>
 
       <ActionButtons>
-        <Button variant="destructive">Hapus</Button>
-        <Button className="bg-emerald-600 hover:bg-emerald-700">Edit</Button>
+        <Button variant="destructive">{t('common.delete')}</Button>
+        <Button className="bg-emerald-600 hover:bg-emerald-700">{t('common.edit')}</Button>
       </ActionButtons>
     </Container>
   );

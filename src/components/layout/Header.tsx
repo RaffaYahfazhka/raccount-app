@@ -1,6 +1,8 @@
 
 import { Home, BookOpen, User } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/hooks/useLanguage';
 import {
   HeaderContainer,
   HeaderContent,
@@ -13,9 +15,16 @@ import {
 
 export const Header = () => {
   const location = useLocation();
-  const isAccountPage = location.pathname === '/account';
-  const isGeneralLedgerPage = location.pathname === '/general-ledger' || location.pathname === '/';
-  const isAccountDetailPage = location.pathname.startsWith('/account/');
+  const { t } = useTranslation();
+  const { language } = useLanguage();
+  
+  // Get language prefix for navigation
+  const langPrefix = language === 'id' ? '/id' : language === 'en' ? '/en' : '';
+  
+  const isHomePage = location.pathname === '/' || location.pathname === '/en' || location.pathname === '/id';
+  const isAccountPage = location.pathname.endsWith('/account');
+  const isGeneralLedgerPage = location.pathname.endsWith('/general-ledger');
+  const isAccountDetailPage = location.pathname.includes('/account/') && location.pathname.split('/').length > 3;
   
   return (
     <HeaderContainer>
@@ -23,61 +32,61 @@ export const Header = () => {
         <Logo>Raccount</Logo>
         
         <NavLinks>
-          <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
+          <Link to={langPrefix || '/'} className={isHomePage ? 'active' : ''}>
             <Home size={16} />
-            <span>Home</span>
+            <span>{t('nav.home')}</span>
           </Link>
-          <Link to="/general-ledger" className={isGeneralLedgerPage && location.pathname !== '/' ? 'active' : ''}>
+          <Link to={`${langPrefix}/general-ledger`} className={isGeneralLedgerPage ? 'active' : ''}>
             <BookOpen size={16} />
-            <span>General Ledger</span>
+            <span>{t('nav.generalLedger')}</span>
           </Link>
-          <Link to="/account" className={isAccountPage ? 'active' : ''}>
+          <Link to={`${langPrefix}/account`} className={isAccountPage ? 'active' : ''}>
             <User size={16} />
-            <span>Account</span>
+            <span>{t('nav.account')}</span>
           </Link>
         </NavLinks>
 
         <Breadcrumb>
-          <Link to="/"><Home size={16} /></Link>
+          <Link to={langPrefix || '/'}><Home size={16} /></Link>
           <BreadcrumbSeparator>/</BreadcrumbSeparator>
-          <BreadcrumbItem>Home</BreadcrumbItem>
+          <BreadcrumbItem>{t('nav.home')}</BreadcrumbItem>
           <BreadcrumbSeparator>/</BreadcrumbSeparator>
           {isAccountDetailPage ? (
             <>
-              <Link to="/general-ledger">
+              <Link to={`${langPrefix}/general-ledger`}>
                 <BookOpen size={16} />
               </Link>
               <BreadcrumbItem>
-                <Link to="/general-ledger">General Ledger</Link>
+                <Link to={`${langPrefix}/general-ledger`}>{t('nav.generalLedger')}</Link>
               </BreadcrumbItem>
               <BreadcrumbSeparator>/</BreadcrumbSeparator>
-              <Link to="/account">
+              <Link to={`${langPrefix}/account`}>
                 <User size={16} />
               </Link>
               <BreadcrumbItem>
-                <Link to="/account">Account</Link>
+                <Link to={`${langPrefix}/account`}>{t('nav.account')}</Link>
               </BreadcrumbItem>
               <BreadcrumbSeparator>/</BreadcrumbSeparator>
-              <BreadcrumbItem active>Account Detail</BreadcrumbItem>
+              <BreadcrumbItem active>{t('account.detail.title')}</BreadcrumbItem>
             </>
           ) : isAccountPage ? (
             <>
-              <Link to="/general-ledger">
+              <Link to={`${langPrefix}/general-ledger`}>
                 <BookOpen size={16} />
               </Link>
               <BreadcrumbItem>
-                <Link to="/general-ledger">General Ledger</Link>
+                <Link to={`${langPrefix}/general-ledger`}>{t('nav.generalLedger')}</Link>
               </BreadcrumbItem>
               <BreadcrumbSeparator>/</BreadcrumbSeparator>
               <User size={16} />
-              <BreadcrumbItem active>Account</BreadcrumbItem>
+              <BreadcrumbItem active>{t('nav.account')}</BreadcrumbItem>
             </>
-          ) : (
+          ) : isGeneralLedgerPage ? (
             <>
               <BookOpen size={16} />
-              <BreadcrumbItem active>General Ledger</BreadcrumbItem>
+              <BreadcrumbItem active>{t('nav.generalLedger')}</BreadcrumbItem>
             </>
-          )}
+          ) : null}
         </Breadcrumb>
       </HeaderContent>
     </HeaderContainer>
