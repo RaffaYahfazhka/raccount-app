@@ -6,7 +6,7 @@ import { Header } from '@/components/layout/Header';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useAccounts } from '@/hooks/useAccounts';
-import { AccountDetailTab } from '@/components/modules/AccountDetailTab/AccountDetailTab';
+import { AccountDetailTab } from '@/components/modules/AccountDetailTab';
 import { TransactionHistoryTab } from '@/components/modules/TransactionHistoryTab/TransactionHistoryTab';
 import {
   PageContainer,

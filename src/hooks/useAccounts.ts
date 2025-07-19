@@ -10,7 +10,7 @@ const mockAccounts: Account[] = [
     name: 'Inventory',
     category: 'Asset',
     balance: 0,
-    description: 'Office equipments'
+    description: 'Office equipments hdkhbkbkadea'
   },
   {
     id: '2',

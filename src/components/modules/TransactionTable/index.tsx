@@ -12,7 +12,7 @@ import {
   TableCell,
   AmountCell,
   ActionCell
-} from './TransactionTable.styles';
+} from './styles';
 
 interface TransactionTableProps {
   transactions: Transaction[];

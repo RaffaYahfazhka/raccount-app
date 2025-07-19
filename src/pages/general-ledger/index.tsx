@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Plus, FileText } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
-import { TransactionTable } from '@/components/modules/TransactionTable/TransactionTable';
+import { TransactionTable } from '@/components/modules/TransactionTable/index';
 import { AdvancedSearch } from '@/components/modules/AdvancedSearch';
 import { TransactionForm } from '@/components/modules/TransactionForm';
 import { DeleteTransactionDialog } from '@/components/modules/DeleteTransactionDialog';

@@ -17,7 +17,7 @@ import {
   TableRow,
   TableCell,
   ActionButtons
-} from './AccountDetailTab.styles';
+} from './styles';
 
 interface AccountDetailTabProps {
   account: Account;

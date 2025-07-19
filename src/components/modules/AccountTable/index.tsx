@@ -17,7 +17,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { AccountForm } from '@/components/modules/AccountForm/AccountForm';
+import { AccountForm } from '@/components/modules/AccountForm';
 import { AccountDeleteDialog } from '@/components/modules/AccountDeleteDialog/AccountDeleteDialog';
 import { AccountDeactivateDialog } from '@/components/modules/AccountDeactivateDialog/AccountDeactivateDialog';
 import {
@@ -25,7 +25,7 @@ import {
   ActionCell,
   CodeCell,
   CategoryCell
-} from './AccountTable.styles';
+} from './styles';
 
 interface AccountTableProps {
   accounts: Account[];
@@ -125,14 +125,14 @@ export const AccountTable = ({ accounts, onEdit, onDelete, onDeactivate }: Accou
                           <Edit className="h-4 w-4 mr-2" />
                           Edit Account
                         </DropdownMenuItem>
-                        <DropdownMenuItem 
+                        <DropdownMenuItem
                           onClick={() => setDeletingAccount(account)}
                           className="text-red-600"
                         >
                           <Trash2 className="h-4 w-4 mr-2" />
                           Delete Account
                         </DropdownMenuItem>
-                        <DropdownMenuItem 
+                        <DropdownMenuItem
                           onClick={() => setDeactivatingAccount(account)}
                           className="text-orange-600"
                         >

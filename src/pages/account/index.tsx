@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { Plus, Search } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
-import { AccountTable } from '@/components/modules/AccountTable/AccountTable';
-import { AccountForm } from '@/components/modules/AccountForm/AccountForm';
+import { AccountTable } from '@/components/modules/AccountTable';
+import { AccountForm } from '@/components/modules/AccountForm';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -19,7 +19,7 @@ import {
   LoadingState,
   ErrorState,
   AddButton
-} from './Account.styles';
+} from './styles';
 
 export default function AccountPage() {
   const { accounts, loading, error, addAccount, updateAccount, deleteAccount } = useAccounts();
@@ -67,8 +67,8 @@ export default function AccountPage() {
 
   const filteredAccounts = accounts.filter(account => {
     const matchesSearch = account.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         account.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         account.category.toLowerCase().includes(searchTerm.toLowerCase());
+      account.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      account.category.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = categoryFilter === 'All' || account.category === categoryFilter;
     return matchesSearch && matchesCategory;
   });
@@ -78,7 +78,7 @@ export default function AccountPage() {
   return (
     <PageContainer>
       <Header />
-      
+
       <MainContent>
         <PageHeader>
           <PageTitle>Accounts</PageTitle>
@@ -95,7 +95,7 @@ export default function AccountPage() {
                 className="pl-10"
               />
             </div>
-            
+
             <div className="flex gap-4 items-center">
               <div className="flex items-center gap-2">
                 <span className="text-sm font-medium">Account Category</span>
@@ -113,7 +113,7 @@ export default function AccountPage() {
                   </SelectContent>
                 </Select>
               </div>
-              
+
               <div className="flex items-center gap-2">
                 <span className="text-sm font-medium">Show</span>
                 <Select value={showFilter.toString()} onValueChange={handleShowChange}>
@@ -142,7 +142,7 @@ export default function AccountPage() {
           {loading ? (
             <LoadingState>Loading accounts...</LoadingState>
           ) : (
-            <AccountTable 
+            <AccountTable
               accounts={displayedAccounts}
               onEdit={handleEditAccount}
               onDelete={handleDeleteAccount}
@@ -152,7 +152,7 @@ export default function AccountPage() {
         </TableSection>
 
         <AddButton>
-          <Button 
+          <Button
             className="bg-emerald-600 hover:bg-emerald-700"
             onClick={() => setShowAddForm(true)}
           >

@@ -3,7 +3,7 @@ import React from 'react';
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { SearchContainer } from './AccountSearch.styles';
+import { SearchContainer } from './styles';
 
 interface AccountSearchProps {
   searchTerm: string;

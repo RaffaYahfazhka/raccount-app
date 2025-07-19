@@ -5,7 +5,6 @@ import { BookOpen, User, TrendingUp, DollarSign, FileText, BarChart3 } from 'luc
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Header } from '@/components/layout/Header';
-import { Button } from '@/components/ui/button';
 import {
   PageContainer,
   MainContent,

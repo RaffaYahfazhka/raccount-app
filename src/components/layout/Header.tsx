@@ -7,9 +7,6 @@ import {
   HeaderContainer,
   HeaderContent,
   Logo,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbSeparator,
   NavLinks
 } from './Header.styles';
 
@@ -24,7 +21,6 @@ export const Header = () => {
   const isHomePage = location.pathname === '/' || location.pathname === '/en' || location.pathname === '/id';
   const isAccountPage = location.pathname.endsWith('/account');
   const isGeneralLedgerPage = location.pathname.endsWith('/general-ledger');
-  const isAccountDetailPage = location.pathname.includes('/account/') && location.pathname.split('/').length > 3;
   
   return (
     <HeaderContainer>
@@ -46,48 +42,7 @@ export const Header = () => {
           </Link>
         </NavLinks>
 
-        <Breadcrumb>
-          <Link to={langPrefix || '/'}><Home size={16} /></Link>
-          <BreadcrumbSeparator>/</BreadcrumbSeparator>
-          <BreadcrumbItem>{t('nav.home')}</BreadcrumbItem>
-          <BreadcrumbSeparator>/</BreadcrumbSeparator>
-          {isAccountDetailPage ? (
-            <>
-              <Link to={`${langPrefix}/general-ledger`}>
-                <BookOpen size={16} />
-              </Link>
-              <BreadcrumbItem>
-                <Link to={`${langPrefix}/general-ledger`}>{t('nav.generalLedger')}</Link>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>/</BreadcrumbSeparator>
-              <Link to={`${langPrefix}/account`}>
-                <User size={16} />
-              </Link>
-              <BreadcrumbItem>
-                <Link to={`${langPrefix}/account`}>{t('nav.account')}</Link>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>/</BreadcrumbSeparator>
-              <BreadcrumbItem active>{t('account.detail.title')}</BreadcrumbItem>
-            </>
-          ) : isAccountPage ? (
-            <>
-              <Link to={`${langPrefix}/general-ledger`}>
-                <BookOpen size={16} />
-              </Link>
-              <BreadcrumbItem>
-                <Link to={`${langPrefix}/general-ledger`}>{t('nav.generalLedger')}</Link>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>/</BreadcrumbSeparator>
-              <User size={16} />
-              <BreadcrumbItem active>{t('nav.account')}</BreadcrumbItem>
-            </>
-          ) : isGeneralLedgerPage ? (
-            <>
-              <BookOpen size={16} />
-              <BreadcrumbItem active>{t('nav.generalLedger')}</BreadcrumbItem>
-            </>
-          ) : null}
-        </Breadcrumb>
+       
       </HeaderContent>
     </HeaderContainer>
   );

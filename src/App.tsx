@@ -2,8 +2,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
 import Index from '@/pages/Index';
-import GeneralLedgerPage from '@/pages/GeneralLedger';
-import AccountPage from '@/pages/Account';
+import GeneralLedgerPage from '@/pages/general-ledger';
+import AccountPage from '@/pages/account';
 import AccountDetailPage from '@/pages/AccountDetail';
 
 export default function App() {
